@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import '../css/flashcard.css'
+import editIcon from '../assets/edit.png'
 
 const StudyFlashCardPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -32,7 +33,9 @@ const StudyFlashCardPage = () => {
     <div className="flashcard-container">
       <div className='flashcard-topic'>
     <span>Topic: {currentFlashcardSet.topic}</span>
-    <button className="edit-button">Edit</button>
+    <div className="edit-icon" onClick={() => console.log('Edit clicked')}>
+          <img src={editIcon} alt="Edit" />
+        </div>
 </div>
       <div className={`flashcard-content ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
         {flipped ? currentDescription : currentTerm}

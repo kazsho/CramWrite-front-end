@@ -32,7 +32,7 @@
   }
   
   .flashcard-content {
-    background-color: #ffffff;
+    background-color: #CCDCE8;
     padding: 5%;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -66,15 +66,8 @@
     font-weight: bold;
 }
 
-  .edit-button {
-    padding: 8px 16px;
-    font-size: 16px;
-    background-color: #BFA7A7;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-right: 1%;
+.edit-icon {
+    width: 30px; 
+    height: 30px;
 }
-  
   
