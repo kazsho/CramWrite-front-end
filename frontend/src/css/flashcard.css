@@ -1,26 +1,29 @@
 .flashcard-container {
+    width: 90%;
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 30px;
+    padding: 3% 5%;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 100px auto 50px;
+    background-color: #F6F6F6;
   }
   
   .flashcard-controls {
     display: flex;
-    margin: 10px;
-    justify-content: space-evenly;
+    margin-top: 30px;
+    justify-content:space-evenly;
     align-items: center;
+    font-size: 20px;
   }
   
   .flashcard-controls button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #304863;
+    background-color: rgb(83 59 77);
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
   }
   
@@ -29,11 +32,12 @@
   }
   
   .flashcard-content {
-    background-color: #fff;
+    background-color: #ffffff;
+    padding: 5%;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 100px;
-    width: 800px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
     height: 400px;
     display: flex;
     justify-content: center;
@@ -45,11 +49,32 @@
   
   
   .flashcard-content:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
   
   
   .flashcard-content span {
     font-size: 18px;
   }
+
+  .flashcard-topic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+  .edit-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #BFA7A7;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 1%;
+}
+  
   
