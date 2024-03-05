@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import "../css/flashcard.css"
 
 const StudyFlashCardPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
