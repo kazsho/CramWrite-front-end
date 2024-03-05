@@ -53,15 +53,3 @@
     font-size: 18px;
   }
   
-  a {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
