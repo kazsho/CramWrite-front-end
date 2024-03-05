@@ -14,6 +14,8 @@ import CreateFlashCardPage from './pages/CreateFlashCardPage.jsx';
 import CreateQuizPage from './pages/CreateQuizPage.jsx';
 import PlayQuizPage from './pages/PlayQuizPage.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import AllFlashcardsPage from './pages/AllFlashcardsPage.jsx'
+import AllQuizzesPage from './pages/AllQuizzesPage.jsx';
  
  
 
@@ -24,7 +26,9 @@ const router = createBrowserRouter(
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
       <Route path='' element={<PrivateRoute />}>
+        <Route path='/flashcards' element={<AllFlashcardsPage/>}/>
         <Route path="/flashcard/create" element={<CreateFlashCardPage />} />
+        <Route path='/quizzes' element={<AllQuizzesPage/>}/>
         <Route path="/quiz/create" element={<CreateQuizPage />} />
         <Route path="/quiz/play/:id" element={<PlayQuizPage />} />
         <Route path="/flashcard/study/:id" element={<PlayQuizPage />} />
