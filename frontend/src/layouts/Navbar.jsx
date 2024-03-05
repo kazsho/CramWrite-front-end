@@ -2,7 +2,8 @@ import React, { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Dropdown from '../components/Dropdown'
+import Dropdown from '../components/Navbar/Dropdown'
+import { Link } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -13,33 +14,30 @@ export default function Navbar() {
     <Disclosure as="nav" className="bg-[#533B4D]">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+          <div className="px-2 sm:px-4 lg:px-8 w-full">
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                  
-                 <h1 className='text-white font-bold'>CramRight</h1>
+                 <h1 className='text-white font-bold'><Link to="/">CramRight</Link></h1>
                 
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
                     {/* Current: "bg-gray-900 text-white", Default: "text-white" */}
-                    <a
-                      href="#"
+                    <Link
+                      to="/"
                       className="px-3 py-2 text-sm font-medium text-white"
                     >
                       Home
-                    </a>
-                    <a
-                      href="#"
-                      className="px-3 py-2 text-sm font-medium text-white"
-                    >
+                    </Link>
+                    <Link to='/flashcards' className="px-3 py-2 text-sm font-medium text-white">
                       Flashcards
-                    </a>
-                    <a
-                      href="#"
+                    </Link>
+                    <Link
+                      to="/quizzes"
                       className="px-3 py-2 text-sm font-medium text-white"
                     >
                      Quizzes
-                    </a>
+                    </Link>
                     
                   </div>
                 </div>
@@ -67,7 +65,7 @@ export default function Navbar() {
                 <Dropdown />
                 
               </div>
-              <h2 className='text-white ml-4'>Hi, James</h2>
+              <h2 className='text-white ml-4'>Hi James, Happy Revision!</h2>
               <div className="flex lg:hidden">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
