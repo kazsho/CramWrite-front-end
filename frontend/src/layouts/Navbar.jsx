@@ -17,7 +17,7 @@ export default function Navbar() {
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                  
-                 <h1 className='text-white font-bold'>CramRight</h1>
+                 <p className='text-white font-bold text-lg'>CramRight</p>
                 
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
