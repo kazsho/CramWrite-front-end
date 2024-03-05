@@ -29,7 +29,7 @@ const StudyFlashCardPage = () => {
 
   return (
     <div className="flashcard-container">
-      <h1> Topic: {currentFlashcardSet.topic}</h1>
+      <div className='flashcard-topic'> Topic: {currentFlashcardSet.topic}</div>
       <div className={`flashcard-content ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
         {flipped ? currentDescription : currentTerm}
       </div>
