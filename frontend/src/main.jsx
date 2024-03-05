@@ -16,6 +16,7 @@ import PlayQuizPage from './pages/PlayQuizPage.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import AllFlashcardsPage from './pages/AllFlashcardsPage.jsx'
 import AllQuizzesPage from './pages/AllQuizzesPage.jsx';
+import StudyFlashCardPage from './pages/StudyFlashCardPage.jsx';
  
  
 
@@ -31,7 +32,7 @@ const router = createBrowserRouter(
         <Route path='/quizzes' element={<AllQuizzesPage/>}/>
         <Route path="/quiz/create" element={<CreateQuizPage />} />
         <Route path="/quiz/play/:id" element={<PlayQuizPage />} />
-        <Route path="/flashcard/study/:id" element={<PlayQuizPage />} />
+        <Route path="/flashcard/study/:id" element={<StudyFlashCardPage />} />
       </Route>  
     </Route>
   )
