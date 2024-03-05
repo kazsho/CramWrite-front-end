@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../css/flashcard.css'
 import editIcon from '../assets/edit.png'
 
@@ -32,13 +33,18 @@ const StudyFlashCardPage = () => {
   return (
     <div className="flashcard-container">
       <div className='flashcard-topic'>
-    <span>Topic: {currentFlashcardSet.topic}</span>
-    <div className="edit-icon" onClick={() => console.log('Edit clicked')}>
+        {currentFlashcardSet.topic}
+        <Link to={`/edit/${id}`} className="edit-icon">
           <img src={editIcon} alt="Edit" />
+        </Link>
+      </div>
+      <div className={`flipper ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
+        <div className="front flashcard-content">
+          {currentTerm}
         </div>
-</div>
-      <div className={`flashcard-content ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
-        {flipped ? currentDescription : currentTerm}
+        <div className="back flashcard-content">
+          {currentDescription}
+        </div>
       </div>
       <div className="flashcard-controls">
         <button onClick={handlePrevCard}>Previous</button>
@@ -46,7 +52,7 @@ const StudyFlashCardPage = () => {
         <button onClick={handleNextCard}>Next</button>
       </div>
     </div>
-  )
+  );
 }
 
 export default StudyFlashCardPage

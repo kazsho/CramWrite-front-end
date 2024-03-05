@@ -32,7 +32,7 @@
   }
   
   .flashcard-content {
-    background-color: #CCDCE8;
+    background-color: #BDE1C3;
     padding: 5%;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -44,19 +44,8 @@
     align-items: center;
     font-size: 24px;
     cursor: pointer;
-    transition: transform 0.5s;
   }
   
-  
-  .flashcard-content:hover {
-    transform: scale(1.02);
-  }
-  
-  
-  .flashcard-content span {
-    font-size: 18px;
-  }
-
   .flashcard-topic {
     display: flex;
     justify-content: space-between;
@@ -69,5 +58,31 @@
 .edit-icon {
     width: 30px; 
     height: 30px;
+    cursor: pointer;
 }
-  
+
+.flipper {
+  transition: 0.2s;
+  transform-style: preserve-3d;
+  position: relative;
+  height: 400px;
+}
+
+.flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+}
+
+.front {
+  z-index: 2;
+  height: 400px;
+}
+
+.back {
+  transform: rotateY(180deg);
+  height: 400px;
+}
