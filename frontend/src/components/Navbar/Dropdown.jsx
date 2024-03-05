@@ -5,6 +5,7 @@ import { PlusIcon } from '@heroicons/react/20/solid'
 import { FolderIcon } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 import { PlusCircleIcon } from '@heroicons/react/20/solid'
+import { Link } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -15,12 +16,11 @@ export default function Dropdown() {
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button>
-        <button
-        type="button"
+        <div
         className="rounded-full bg-[#E5DEDE] p-2 text-white shadow-sm ml-5"
       >
         <PlusIcon className="h-5 w-5 text-[#533B4D]" aria-hidden="true" />
-      </button>
+      </div>
            
         </Menu.Button>
       </div>
@@ -58,12 +58,12 @@ export default function Dropdown() {
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                href="#"
+                <Link
+                to="/quiz/create"
                 className="text-gray-700 block px-4 py-2 text-sm flex items-center">
                   <PlusCircleIcon className="h-5 w-5 text-[#533B4D] mr-2" aria-hidden="true" />
                 Create quiz
-              </a>
+              </Link>
               )}
             </Menu.Item>
             
