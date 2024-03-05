@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 
 // Create the UserContext
-const UserContext = createContext();
+export const UserContext = createContext();
 
 // Get user from localStorage
 const user = JSON.parse(localStorage.getItem('user'))

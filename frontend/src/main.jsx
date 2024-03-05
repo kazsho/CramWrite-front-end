@@ -13,6 +13,7 @@ import RegisterPage from './pages/RegisterPage.jsx';
 import CreateFlashCardPage from './pages/CreateFlashCardPage.jsx';
 import CreateQuizPage from './pages/CreateQuizPage.jsx';
 import PlayQuizPage from './pages/PlayQuizPage.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
  
  
 
