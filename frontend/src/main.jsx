@@ -27,7 +27,7 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<Homepage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
-      <Route path='' element={<PrivateRoute />}>
+      {/* <Route path='' element={<PrivateRoute />}> */}
         <Route path='/flashcards' element={<AllFlashcardsPage/>}/>
         <Route path="/flashcard/create" element={<CreateFlashCardPage />} />
         <Route path='/quizzes' element={<AllQuizzesPage/>}/>
@@ -35,7 +35,7 @@ const router = createBrowserRouter(
         <Route path="/quiz/play/:id" element={<PlayQuizPage />} />
         <Route path="/flashcard/study/:id" element={<StudyFlashCardPage />} />
       </Route>  
-    </Route>
+    // </Route>
   )
 );
 
