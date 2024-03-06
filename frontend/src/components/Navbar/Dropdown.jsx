@@ -48,12 +48,12 @@ export default function Dropdown() {
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                href="#"
+                <Link
+                to="/flashcard/create"
                 className="text-gray-700 block px-4 py-2 text-sm flex items-center">
                   <DocumentDuplicateIcon className="h-5 w-5 text-[#533B4D] mr-2" aria-hidden="true" />
                 Flashcard set
-              </a>
+              </Link>
               )}
             </Menu.Item>
             <Menu.Item>
