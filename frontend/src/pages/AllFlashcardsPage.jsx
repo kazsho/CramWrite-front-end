@@ -1,49 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../css/allFlashcardsPage.css";
 
 const AllFlashcardsPage = () => {
-  const placeholderFolders = [
-    { id: 1, name: "Coding", color: "#E9DBDB" },
-    { id: 2, name: "Project Management", color: "#CCDCE8" },
-  ];
+  const { id } = useParams();
+  const [folders, setFolders] = useState([]);
+  const [flashcards, setFlashcards] = useState([]);
 
-  const placeholderFlashcards = [
-    { title: "Redux", color: "#C8E6C9" },
-    { title: "Redux", color: "#C8E6C9" },
-    { title: "Redux", color: "#C8E6C9" },
-    { title: "Stakeholder Analysis", color: "#FFCDD2" },
-    { title: "Stakeholder Analysis", color: "#FFCDD2" },
-    { title: "Stakeholder Analysis", color: "#FFCDD2" },
-    { title: "Agile", color: "#E1BEE7" },
-    { title: "Agile", color: "#E1BEE7" },
-    { title: "Agile", color: "#E1BEE7" },
-  ];
-
-  const [folders, setFolders] = useState(placeholderFolders);
-  const [flashcards, setFlashcards] = useState(placeholderFlashcards);
-
-  // If the data is dynamically produced
   useEffect(() => {
     const fetchFolders = async () => {
       try {
-        // What is the end point for the response on line 31?
-        const response = await fetch;
+        const url = `http://localhost:3000/folder/${id}`;
+        const response = await fetch(url);
         const data = await response.json();
-        setFolders(data);
+        setFolders([data]);
       } catch (error) {
         console.error("Error fetching folders", error);
+        setFolders([]);
       }
     };
 
     const fetchFlashcards = async () => {
       try {
-        // What is the end point for the response on line 42?
-        const response = await fetch;
+        const url = `http://localhost:3000/flashcards/`;
+        const response = await fetch(url);
         const data = await response.json();
-        setFlashcards(data);
+        setFlashcards([data]);
       } catch (error) {
-        console.error("Error fetching flashcards", error);
+        console.error("Error fetching folders", error);
+        setFlashcards([]);
       }
     };
 
@@ -70,15 +55,20 @@ const AllFlashcardsPage = () => {
       <div className="section">
         <h2 className="section-title">Your Flashcards</h2>
         <div className="flashcard-grid">
-          {flashcards.map((flashcard) => (
-            <div
-              key={flashcard.title}
-              className="flashcard-item"
-              style={{ backgroundColor: flashcard.color }}
-            >
-              {flashcard.title}{" "}
-            </div>
-          ))}
+          {flashcards.map(
+            (
+              flashcard,
+              index 
+            ) => (
+              <div
+                key={flashcard.id || index} 
+                className="flashcard-item"
+                style={{ backgroundColor: flashcard.color }}
+              >
+                {flashcard.title}
+              </div>
+            )
+          )}
         </div>
       </div>
     </div>
