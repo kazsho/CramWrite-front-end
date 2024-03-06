@@ -36,6 +36,13 @@
   font-size: 1.6rem; 
 }
 
+.folder-card:hover {
+  transform: scale(1.05);
+}
+
+.flashcard-item:hover {
+  transform: scale(1.05);
+}
 
 @media (max-width: 768px) {
   .folder-grid {
