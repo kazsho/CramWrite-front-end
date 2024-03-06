@@ -38,13 +38,13 @@ const StudyFlashCardPage = () => {
   const currentFlashcard = flashcards[currentIndex];
 
   return (
-    <div className="flashcard-container">
-      <div className='flashcard-topic'>Science
+    <div role="flashcard-container" className="flashcard-container">
+      <div role="flashcard-topic" className='flashcard-topic'>Science
         <Link to={`/edit/${id}`} className="edit-icon">
           <img src={editIcon} alt="Edit" />
         </Link>
       </div>
-      <div className={`flipper ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
+      <div role="flipper" className={`flipper ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
         <div className="front flashcard-content">
           {currentFlashcard && currentFlashcard.term}
         </div>
