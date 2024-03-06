@@ -77,7 +77,6 @@ const AllFlashcardsPage = () => {
               style={{ backgroundColor: flashcard.color }}
             >
               {flashcard.title}{" "}
-              {/* Corrected from {flashcard.name} to {flashcard.title} */}
             </div>
           ))}
         </div>

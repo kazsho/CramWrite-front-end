@@ -1,27 +1,27 @@
 .dashboard {
   padding: 20px;
-  max-width: 1000px; /* Adjust the max-width as needed */
+  max-width: 1200px; 
   margin: auto;
 }
 
 .section-title {
-  margin-top: 50px;
+  margin-top: 45px;
   margin-bottom: 20px;
-  font-size: 24px; /* Example size, adjust as needed */
+  font-size: 24px; 
   font-weight: bold;
 }
 
 .folder-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns for the folders */
-  grid-gap: 20px; /* Adjust the gap size as needed */
-  margin-bottom: 40px; /* Space between sections */
+  grid-template-columns: repeat(2, 1fr); 
+  grid-gap: 50px; 
+  margin-bottom: 40px; 
 }
 
 .flashcard-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns for the flashcards */
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-gap: 50px;
 }
 
 .folder-card,
@@ -31,18 +31,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 175px; /* Adjust height as needed */
+  height: 190px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 1.6rem; /* Adjust font size as needed */
+  font-size: 1.6rem; 
 }
 
-/* Example media query for responsive adjustments */
+
 @media (max-width: 768px) {
   .folder-grid {
-    grid-template-columns: repeat(1, 1fr); /* 1 column for smaller screens */
+    grid-template-columns: repeat(1, 1fr); 
   }
 
   .flashcard-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
