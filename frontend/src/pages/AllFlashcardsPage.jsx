@@ -39,7 +39,6 @@ const AllFlashcardsPage = () => {
         };
         const response = await fetch(url, options);
         const data = await response.json();
-        console.log(data);
         setFlashcards(data);
       } catch (error) {
         console.error("Error fetching folders", error);
@@ -80,7 +79,7 @@ const AllFlashcardsPage = () => {
             >
               <div
                 className="flashcard-item"
-                style={{ backgroundColor: flashcard.color }}
+                style={{ backgroundColor: flashcard.colour }}
               >
                 {flashcard.set}
               </div>
