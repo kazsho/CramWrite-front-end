@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "../css/allFlashcardsPage.css";
 
 const AllFlashcardsPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate()
 
   const [flashcards, setFlashcards] = useState([]);
 
@@ -39,7 +40,6 @@ const AllFlashcardsPage = () => {
         }
         const response = await fetch(url, options);
         const data = await response.json();
-        console.log(data)
         setFlashcards(data);
       } catch (error) {
         console.error("Error fetching folders", error);
@@ -49,6 +49,10 @@ const AllFlashcardsPage = () => {
     
     fetchFlashcards();
   }, []);
+
+  const onFlashcardClick = (flashcardId) => {
+    navigate(`./pages/StudyFlashCardPage/${flashcardId}`); 
+  };
 
   return (
     <div className="dashboard">
@@ -77,6 +81,7 @@ const AllFlashcardsPage = () => {
               <div
                 key={flashcard.id || index} 
                 className="flashcard-item"
+                onClick={() => onFlashcardClick(flashcard.id)}
                 // style={{ backgroundColor: flashcard.color }}
               >
                 {flashcard.set}
