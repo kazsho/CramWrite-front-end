@@ -8,9 +8,16 @@ const AllQuizzesPage = () => {
     const fetchQuizzes = async () => {
       try {
         const url = `http://localhost:3000/quiz/`;
-        const response = await fetch(url);
+        const options = {
+          method: "GET",
+          headers: {
+            Authorization: 'b0036e07-d0b4-4a34-8b32-58f889d75598'
+          }
+        }
+        const response = await fetch(url, options);
         const data = await response.json();
-        setQuizzes([data]);
+        console.log(data)
+        setQuizzes(data);
       } catch (error) {
         console.error("Error fetching quizzes", error);
         setQuizzes([]);
@@ -32,7 +39,7 @@ const AllQuizzesPage = () => {
                 className="quiz-card"
                 style={{ backgroundColor: "#FFA07A" }}
               >
-                {quiz.title}
+                {quiz.name}
               </div>
             ))}
         </div>
