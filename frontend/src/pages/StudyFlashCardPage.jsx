@@ -13,27 +13,33 @@ const StudyFlashCardPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:3000/flashcards/learn_set/${id}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        setFlashcards(data);
+        const url = `http://localhost:3000/set/${id}/flashcard`
+        const options = {
+          method: 'GET',
+          headers: {
+            'Authorization': 'b0036e07-d0b4-4a34-8b32-58f889d75598',
+          }
+        }
+        const response = await fetch(url, options)
+        const data = await response.json()
+        setFlashcards(data)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
       }
-    };
+    }
   
-    fetchData();
-  }, [id]);
+    fetchData()
+  }, [id])
 
   const handleNextCard = () => {
-    setCurrentIndex(prevIndex => (prevIndex === flashcards.length - 1 ? 0 : prevIndex + 1));
-    setFlipped(false);
-  };
+    setCurrentIndex(prevIndex => (prevIndex === flashcards.length - 1 ? 0 : prevIndex + 1))
+    setFlipped(false)
+  }
 
   const handlePrevCard = () => {
-    setCurrentIndex(prevIndex => (prevIndex === 0 ? flashcards.length - 1 : prevIndex - 1));
-    setFlipped(false);
-  };
+    setCurrentIndex(prevIndex => (prevIndex === 0 ? flashcards.length - 1 : prevIndex - 1))
+    setFlipped(false)
+  }
 
   const currentFlashcard = flashcards[currentIndex];
 
