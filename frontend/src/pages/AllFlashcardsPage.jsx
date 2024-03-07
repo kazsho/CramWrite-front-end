@@ -4,35 +4,49 @@ import "../css/allFlashcardsPage.css";
 
 const AllFlashcardsPage = () => {
   const { id } = useParams();
-  const [folders, setFolders] = useState([]);
+
   const [flashcards, setFlashcards] = useState([]);
 
-  useEffect(() => {
-    const fetchFolders = async () => {
-      try {
-        const url = `http://localhost:3000/folder/${id}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        setFolders([data]);
-      } catch (error) {
-        console.error("Error fetching folders", error);
-        setFolders([]);
-      }
-    };
+  const placeholderFolders = [
+    { id: 1, name: "Coding", color: "#E9DBDB" },
+    { id: 2, name: "Project Management", color: "#CCDCE8" },
+  ];
 
+  const placeholderFlashcards = [
+    { title: "Redux", color: "#C8E6C9" },
+    { title: "Redux", color: "#C8E6C9" },
+    { title: "Redux", color: "#C8E6C9" },
+    { title: "Stakeholder Analysis", color: "#FFCDD2" },
+    { title: "Stakeholder Analysis", color: "#FFCDD2" },
+    { title: "Stakeholder Analysis", color: "#FFCDD2" },
+    { title: "Agile", color: "#E1BEE7" },
+    { title: "Agile", color: "#E1BEE7" },
+    { title: "Agile", color: "#E1BEE7" },
+  ];
+
+  const [folders, setFolders] = useState(placeholderFolders);
+
+
+  useEffect(() => {
     const fetchFlashcards = async () => {
       try {
-        const url = `http://localhost:3000/flashcards/`;
-        const response = await fetch(url);
+        const url = `http://localhost:3000/set`;
+        const options = {
+          method: "GET",
+          headers: {
+            Authorization: 'b0036e07-d0b4-4a34-8b32-58f889d75598'
+          }
+        }
+        const response = await fetch(url, options);
         const data = await response.json();
-        setFlashcards([data]);
+        console.log(data)
+        setFlashcards(data);
       } catch (error) {
         console.error("Error fetching folders", error);
         setFlashcards([]);
       }
     };
-
-    fetchFolders();
+    
     fetchFlashcards();
   }, []);
 
@@ -63,9 +77,9 @@ const AllFlashcardsPage = () => {
               <div
                 key={flashcard.id || index} 
                 className="flashcard-item"
-                style={{ backgroundColor: flashcard.color }}
+                // style={{ backgroundColor: flashcard.color }}
               >
-                {flashcard.title}
+                {flashcard.set}
               </div>
             )
           )}
