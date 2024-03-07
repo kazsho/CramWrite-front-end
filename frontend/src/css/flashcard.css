@@ -6,7 +6,7 @@
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     margin: 100px auto 50px;
-    background-color: #F6F6F6;
+    background-color: #f4edde;
   }
   
   .flashcard-controls {
@@ -32,9 +32,9 @@
   }
   
   .flashcard-content {
-    background-color: #BDE1C3;
+    background-color: #ffffff;
     padding: 5%;
-    border: 2px solid #ccc;
+    border: 2px solid #f3ead5;
     border-radius: 10px;
     width: 100%;
     max-width: 800px;
