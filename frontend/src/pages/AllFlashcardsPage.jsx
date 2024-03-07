@@ -4,7 +4,7 @@ import "../css/allFlashcardsPage.css";
 
 const AllFlashcardsPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [flashcards, setFlashcards] = useState([]);
 
@@ -27,7 +27,6 @@ const AllFlashcardsPage = () => {
 
   const [folders, setFolders] = useState(placeholderFolders);
 
-
   useEffect(() => {
     const fetchFlashcards = async () => {
       try {
@@ -35,23 +34,24 @@ const AllFlashcardsPage = () => {
         const options = {
           method: "GET",
           headers: {
-            Authorization: 'b0036e07-d0b4-4a34-8b32-58f889d75598'
-          }
-        }
+            Authorization: "b0036e07-d0b4-4a34-8b32-58f889d75598",
+          },
+        };
         const response = await fetch(url, options);
         const data = await response.json();
+        console.log(data);
         setFlashcards(data);
       } catch (error) {
         console.error("Error fetching folders", error);
         setFlashcards([]);
       }
     };
-    
+
     fetchFlashcards();
   }, []);
 
   const onFlashcardClick = (flashcardId) => {
-    navigate(`./pages/StudyFlashCardPage/${flashcardId}`); 
+    navigate(`./StudyFlashCardPage/${flashcardId}`);
   };
 
   return (
@@ -73,21 +73,19 @@ const AllFlashcardsPage = () => {
       <div className="section">
         <h2 className="section-title">Your Flashcards</h2>
         <div className="flashcard-grid">
-          {flashcards.map(
-            (
-              flashcard,
-              index 
-            ) => (
+          {flashcards.map((flashcard, index) => (
+            <Link
+              to={`/flashcard/study/${flashcard.id}`}
+              key={flashcard.id || index}
+            >
               <div
-                key={flashcard.id || index} 
                 className="flashcard-item"
-                onClick={() => onFlashcardClick(flashcard.id)}
-                // style={{ backgroundColor: flashcard.color }}
+                style={{ backgroundColor: flashcard.color }}
               >
                 {flashcard.set}
               </div>
-            )
-          )}
+            </Link>
+          ))}
         </div>
       </div>
     </div>

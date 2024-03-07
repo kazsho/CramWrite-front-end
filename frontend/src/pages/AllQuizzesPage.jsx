@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/allQuizzes.css";
+import { Link } from "react-router-dom"
 
 const AllQuizzesPage = () => {
   const [quizzes, setQuizzes] = useState([]);
@@ -34,13 +35,14 @@ const AllQuizzesPage = () => {
         <div className="quizzes-grid">
           {Array.isArray(quizzes) &&
             quizzes.map((quiz, index) => (
+              <Link to ={`/quiz/play/${quiz.id}`}key={`${quiz.id}-${index}`}>  
               <div
-                key={`${quiz.id}-${index}`}
                 className="quiz-card"
                 style={{ backgroundColor: "#FFA07A" }}
               >
                 {quiz.name}
               </div>
+              </Link>
             ))}
         </div>
       </div>
