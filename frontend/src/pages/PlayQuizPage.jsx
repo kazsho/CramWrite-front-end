@@ -1,38 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import '../css/quiz.css'
 
 const PlayQuizPage = () => {
-  const [questions, setQuestions] = useState([
-    {
-      question_id: 1,
-      quiz_id: 1,
-      question: 'What is an isotope?',
-      good_answer: 'Same number of protons, different number of neutrons',
-      bad_answer1: 'Same number of protons and different number of electrons',
-      bad_answer2: 'Same number of neutrons, different number of electrons',
-      bad_answer3: 'Same number of protons and neutrons'
-    },
-    {
-      question_id: 2,
-      quiz_id: 1,
-      question: 'What is the capital of France?',
-      good_answer: 'Paris',
-      bad_answer1: 'London',
-      bad_answer2: 'Berlin',
-      bad_answer3: 'Madrid'
-    },
-    {
-      question_id: 3,
-      quiz_id: 1,
-      question: 'What is the largest planet in our solar system?',
-      good_answer: 'Jupiter',
-      bad_answer1: 'Mars',
-      bad_answer2: 'Earth',
-      bad_answer3: 'Venus'
-    }
-  ])
-
+  const [questions, setQuestions] = useState([])
+  const { id } = useParams();
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState('')
   const [score, setScore] = useState(0)
@@ -40,23 +12,29 @@ const PlayQuizPage = () => {
   const [showSubmitButton, setShowSubmitButton] = useState(false)
   const [answeredQuestions, setAnsweredQuestions] = useState(new Set())
 
-   // useEffect(() => {
-  //   // const fetchQuestions = async () => {
-  //   //   try {
-  //   //     const response = await fetch('http://localhost:3000/questions');
-  //   //     const data = await response.json();
-  //   //     setQuestions(data);
-  //   //   } catch (error) {
-  //   //     console.error('Error fetching questions:', error);
-  //   //   }
-  //   // };
+   useEffect(() => {
+    const fetchQuestions = async () => {
+      try {const url = `http://localhost:3000/quiz/${id}/question`
+      const options = {
+        method: 'GET',
+        headers: {
+          'Authorization': 'b0036e07-d0b4-4a34-8b32-58f889d75598',
+        }
+      }
+        const response = await fetch(url, options);
+        const data = await response.json();
+        setQuestions(data);
+      } catch (error) {
+        console.error('Error fetching questions', error);
+      }
+    };
 
-  //   // fetchQuestions();
-  // }, []);
+    fetchQuestions();
+  }, []);
 
   useEffect(() => {
     shuffleOptions()
-  }, [currentIndex])
+  }, [currentIndex, questions])
 
   useEffect(() => {
     setShowSubmitButton(currentIndex === questions.length - 1)
