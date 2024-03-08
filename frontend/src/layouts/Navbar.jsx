@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -10,6 +10,12 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const [searchTerm, setSearchTerm] = useState(''); // Define searchTerm using useState
+
+  const handleSearch = () => {
+    // Redirect to search results page
+    window.location.href = `/search?term=${searchTerm}`;
+  };
   return (
     <Disclosure as="nav" className="bg-[#533B4D]">
       {({ open }) => (
@@ -43,7 +49,7 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
-                <div className="w-full">
+                <div className="w-1/2">
                   <label htmlFor="search" className="sr-only">
                     Search
                   </label>
@@ -54,6 +60,15 @@ export default function Navbar() {
                     <input
                       id="search"
                       name="search"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          handleSearch();
+                        }
+                      }}
+
                       className="block w-full rounded-full border-0 bg-[#E5DEDE] py-1.5 pl-10 pr-3 text-black placeholder:text-gray-400 sm:text-sm sm:leading-6 outline-0"
                       placeholder="Search"
                       type="search"

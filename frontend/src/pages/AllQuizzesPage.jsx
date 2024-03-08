@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "../css/allQuizzes.css";
+import { Link } from "react-router-dom"
 
 const AllQuizzesPage = () => {
-  // You would replace this with your actual data fetching logic
-  const placeholderQuizzes = [
-    { id: 1, title: "Redux", category: "Development" },
-    { id: 2, title: "Respiratory System", category: "Biology" },
-    { id: 3, title: "Health Psychology", category: "Psychology" },
-    { id: 1, title: "Redux", category: "Development" },
-    { id: 2, title: "Respiratory System", category: "Biology" },
-    { id: 3, title: "Health Psychology", category: "Psychology" },
-    { id: 1, title: "Redux", category: "Development" },
-    { id: 2, title: "Respiratory System", category: "Biology" },
-    { id: 3, title: "Health Psychology", category: "Psychology" },
-  ];
-
-  const [quizzes, setQuizzes] = useState(placeholderQuizzes);
+  const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
-    // Fetch quizzes here from your API and update the state
     const fetchQuizzes = async () => {
       try {
-        // Replace 'your-endpoint-here' with the actual endpoint
-        const response = await fetch('your-endpoint-here');
+        const url = `http://localhost:3000/quiz/`;
+        const options = {
+          method: "GET",
+          headers: {
+            Authorization: 'b0036e07-d0b4-4a34-8b32-58f889d75598'
+          }
+        }
+        const response = await fetch(url, options);
         const data = await response.json();
         setQuizzes(data);
       } catch (error) {
         console.error("Error fetching quizzes", error);
+        setQuizzes([]);
       }
     };
 
@@ -38,15 +32,17 @@ const AllQuizzesPage = () => {
       <div className="section">
         <h2 className="section-title">All Quizzes</h2>
         <div className="quizzes-grid">
-          {quizzes.map((quiz) => (
-            <div
-              key={quiz.id}
-              className="quiz-card"
-              style={{ backgroundColor: "#FFA07A" }} // Replace with the color logic if necessary
-            >
-              {quiz.title}
-            </div>
-          ))}
+          {Array.isArray(quizzes) &&
+            quizzes.map((quiz, index) => (
+              <Link to ={`/quiz/play/${quiz.id}`}key={`${quiz.id}-${index}`}>  
+              <div
+                className="quiz-card"
+                style={{ backgroundColor: "#FFA07A" }}
+              >
+                {quiz.name}
+              </div>
+              </Link>
+            ))}
         </div>
       </div>
     </div>

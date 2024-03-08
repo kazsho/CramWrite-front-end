@@ -19,6 +19,7 @@ import AllFlashcardsPage from './pages/AllFlashcardsPage.jsx'
 import AllQuizzesPage from './pages/AllQuizzesPage.jsx';
 import StudyFlashCardPage from './pages/StudyFlashCardPage.jsx';
 import { UserProvider } from './context/UserContext.jsx';
+import SearchResultPage from './pages/SearchResultPage.jsx';
  
  
 
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
       <Route path='/register' element={<RegisterPage />} />
       <Route path='' element={<PrivateRoute />}>
       <Route index={true} path='/' element={<Homepage />} />
+      <Route path="/search" element={<SearchResultPage/>} />
         <Route path='/flashcards' element={<AllFlashcardsPage/>}/>
         <Route path="/flashcard/create" element={<CreateFlashCardPage />} />
         <Route path='/quizzes' element={<AllQuizzesPage/>}/>

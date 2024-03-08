@@ -5,6 +5,7 @@ import '../css/flashcard.css';
 import editIcon from '../assets/edit.png';
 
 const StudyFlashCardPage = () => {
+  const [learnSet, setLearnSet] = useState({});
   const [flashcards, setFlashcards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -13,38 +14,50 @@ const StudyFlashCardPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:3000/flashcards/learn_set/${id}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        setFlashcards(data);
+        const url = `http://localhost:3000/set/${id}/flashcard`
+        const options = {
+          method: 'GET',
+          headers: {
+            'Authorization': 'b0036e07-d0b4-4a34-8b32-58f889d75598',
+          }
+        }
+        const response = await fetch(url, options)
+        const flashData = await response.json()
+        setFlashcards(flashData)
+
+        const setId = flashData[0].set
+        const learnSetUrl = `http://localhost:3000/set/${setId}`;
+        const learnSetResponse = await fetch(learnSetUrl, options);
+        const learnSetData = await learnSetResponse.json();
+        setLearnSet(learnSetData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
       }
-    };
+    }
   
-    fetchData();
-  }, [id]);
+    fetchData()
+  }, [id])
 
   const handleNextCard = () => {
-    setCurrentIndex(prevIndex => (prevIndex === flashcards.length - 1 ? 0 : prevIndex + 1));
-    setFlipped(false);
-  };
+    setCurrentIndex(prevIndex => (prevIndex === flashcards.length - 1 ? 0 : prevIndex + 1))
+    setFlipped(false)
+  }
 
   const handlePrevCard = () => {
-    setCurrentIndex(prevIndex => (prevIndex === 0 ? flashcards.length - 1 : prevIndex - 1));
-    setFlipped(false);
-  };
+    setCurrentIndex(prevIndex => (prevIndex === 0 ? flashcards.length - 1 : prevIndex - 1))
+    setFlipped(false)
+  }
 
   const currentFlashcard = flashcards[currentIndex];
 
   return (
-    <div className="flashcard-container">
-      <div className='flashcard-topic'>Science
+    <div role="flashcard-container" className="flashcard-container">
+      <div role="flashcard-topic" className='flashcard-topic'>{learnSet.set}
         <Link to={`/edit/${id}`} className="edit-icon">
           <img src={editIcon} alt="Edit" />
         </Link>
       </div>
-      <div className={`flipper ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
+      <div role="flipper" className={`flipper ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
         <div className="front flashcard-content">
           {currentFlashcard && currentFlashcard.term}
         </div>
