@@ -4,8 +4,8 @@ import { UserContext } from '../context/UserContext';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
-    username: 'gbopola',
-    password: 'sss',
+    username: '',
+    password: '',
   });
 
   const { user, setUser } = useContext(UserContext);
@@ -30,6 +30,8 @@ export default function LoginPage() {
     })
       .then((response) => response.json())
       .then((data) => {
+        setUser(data);
+        console.log(data)
          localStorage.setItem('token', JSON.stringify(data.token).slice(1, -1));
          navigate('/');
       })

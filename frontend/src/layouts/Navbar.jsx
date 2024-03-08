@@ -1,16 +1,21 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Dropdown from '../components/Navbar/Dropdown'
 import { Link } from 'react-router-dom'
-
+import { UserContext } from '../context/UserContext'
+import logo from '../assets/CramRight.png'
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState(''); // Define searchTerm using useState
+
+ 
+
+ 
 
   const handleSearch = () => {
     // Redirect to search results page
@@ -24,7 +29,7 @@ export default function Navbar() {
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                  
-                 <h1 className='text-white font-bold'><Link to="/">CramRight</Link></h1>
+                 <h1 className='text-white font-bold'><Link to="/"><img className='w-24' src={logo} /></Link></h1>
                 
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
@@ -80,7 +85,7 @@ export default function Navbar() {
                 <Dropdown />
                 
               </div>
-              <h2 className='text-white ml-4'>Hi James, Happy Revision!</h2>
+              <h2 className='text-white ml-4'>Welcome!</h2>
               <div className="flex lg:hidden">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">

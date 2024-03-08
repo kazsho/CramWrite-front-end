@@ -1,5 +1,6 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CreateFlashCardPage = () => {
   const [quizData, setQuizData] = useState({
@@ -11,6 +12,8 @@ const CreateFlashCardPage = () => {
       },
     ],
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (field, value) => {
     setQuizData((prevData) => ({
@@ -94,7 +97,7 @@ const CreateFlashCardPage = () => {
             <label className='block mb-1 text-[#333]'>Title</label>
             <input
               type='text'
-              placeholder='Quiz Title'
+              placeholder='Title'
               className='w-full bg-[#E5DEDE] py-2 px-4 outline-none rounded-md placeholder:text-gray-400'
               value={quizData.set}
               onChange={(e) => handleInputChange('set', e.target.value)}
