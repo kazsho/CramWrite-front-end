@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
 const PrivateRoute = () => {
-  const { user } = useContext(UserContext);
+  const user = localStorage.getItem('token');
   return user ? <Outlet /> : <Navigate to='/login' replace />;
 };
 export default PrivateRoute;
