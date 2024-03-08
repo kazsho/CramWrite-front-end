@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CreateQuizPage = () => {
   const [quizData, setQuizData] = useState({
@@ -16,6 +17,8 @@ const CreateQuizPage = () => {
       },
     ],
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (field, value) => {
     setQuizData((prevData) => ({
@@ -115,7 +118,7 @@ const CreateQuizPage = () => {
           <div className='flex-1 mb-5'>
             
             <label className='block mb-1 text-[#333]'>Title</label>
-            <input type='text' placeholder='Quiz Title' className='w-full bg-[#E5DEDE] py-2 px-4 outline-none rounded-md placeholder:text-gray-400' value={quizData.title} onChange={e => handleInputChange('title', e.target.value)} />
+            <input type='text' placeholder='Is ope the goat?' className='w-full bg-[#E5DEDE] py-2 px-4 outline-none rounded-md placeholder:text-gray-400' value={quizData.title} onChange={e => handleInputChange('title', e.target.value)} />
           </div>
           
         </div>

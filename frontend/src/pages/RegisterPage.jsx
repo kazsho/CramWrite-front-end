@@ -4,10 +4,10 @@ import { UserContext } from '../context/UserContext';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
-    client: "Ope Afolabi",
+    client: "",
     teacher: true,
-    username: 'gbopola',
-    password: 'sss',
+    username: '',
+    password: '',
   });
 
   const { user, setUser } = useContext(UserContext);
@@ -32,7 +32,8 @@ export default function RegisterPage() {
     })
       .then((response) => response.json())
       .then((data) => {
-          setUser(data);
+        navigate('/login');
+           console.log(data);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -40,6 +41,7 @@ export default function RegisterPage() {
   };
 
    useEffect(() => {
+    
     localStorage.getItem('user') && navigate('/');
    }, []);
 
