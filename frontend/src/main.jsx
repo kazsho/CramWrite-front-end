@@ -18,16 +18,18 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import AllFlashcardsPage from './pages/AllFlashcardsPage.jsx'
 import AllQuizzesPage from './pages/AllQuizzesPage.jsx';
 import StudyFlashCardPage from './pages/StudyFlashCardPage.jsx';
+import { UserProvider } from './context/UserContext.jsx';
  
  
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
-      <Route index={true} path='/' element={<Homepage />} />
+       
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
-      {/* <Route path='' element={<PrivateRoute />}> */}
+      <Route path='' element={<PrivateRoute />}>
+      <Route index={true} path='/' element={<Homepage />} />
         <Route path='/flashcards' element={<AllFlashcardsPage/>}/>
         <Route path="/flashcard/create" element={<CreateFlashCardPage />} />
         <Route path='/quizzes' element={<AllQuizzesPage/>}/>
@@ -35,12 +37,14 @@ const router = createBrowserRouter(
         <Route path="/quiz/play/:id" element={<PlayQuizPage />} />
         <Route path="/flashcard/study/:id" element={<StudyFlashCardPage />} />
       </Route>  
-    // </Route>
+     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
+      <UserProvider> 
       <RouterProvider router={router} />
+      </UserProvider>
     </React.StrictMode>
 );
